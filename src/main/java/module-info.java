@@ -3,11 +3,13 @@ module com.example.javaproject {
     requires javafx.fxml;
     requires org.jsoup;
     requires  java.sql;
+    requires xsoup;
 
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
 
     opens com.example.javaproject to javafx.fxml;
     exports com.example.javaproject;
-    opens packages;
+    exports com.example.javaproject.Controllers;
+    opens com.example.javaproject.Controllers to javafx.fxml;
 }
