@@ -1,18 +1,19 @@
 package com.example.javaproject.Classes.Translator;
 
-public class TranslationData {
-    private  final String translationPath;
+
+public abstract class TranslationData {
+    private  final String translationXpath;
     private  final String textPartsRegex;
     private  final String urlSpaceReplacement;
 
-    public TranslationData(String translationXpath,int maxTranslationLength,String urlSpaceReplacement){
-        this.translationPath = translationXpath;
+    protected TranslationData(String translationXpath,int maxTranslationLength,String urlSpaceReplacement){
+        this.translationXpath = translationXpath;
         this.textPartsRegex = String.format(".{%d}", maxTranslationLength);
         this.urlSpaceReplacement = urlSpaceReplacement;
     }
 
-    public String getTranslationPath() {
-        return translationPath;
+    public String getTranslationXpath() {
+        return translationXpath;
     }
 
     public String getTextPartsRegex() {
@@ -22,6 +23,8 @@ public class TranslationData {
     public String getUrlSpaceReplacement() {
         return urlSpaceReplacement;
     }
+
+
 
 
 }

@@ -4,6 +4,9 @@ module com.example.javaproject {
     requires org.jsoup;
     requires  java.sql;
     requires xsoup;
+    requires org.seleniumhq.selenium.chrome_driver;
+    requires org.seleniumhq.selenium.api;
+
 
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;

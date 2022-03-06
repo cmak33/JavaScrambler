@@ -17,4 +17,5 @@ public class RussianEnglishTranslationData extends TranslationData{
     public String getEnglishToRussianUrl() {
         return englishToRussianUrl;
     }
+
 }

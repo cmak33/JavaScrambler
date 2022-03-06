@@ -4,5 +4,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaproject.LogRegController">
-    <Button id="b" layoutX="190.0" layoutY="145.0" mnemonicParsing="false" onAction="#OnButtonClick" prefHeight="139.0" prefWidth="187.0" text="Button" />
+    <Button fx:id="translateButton" layoutX="240.0" layoutY="262.0" mnemonicParsing="false"  onAction="#OnTranslateButtonClick" prefHeight="73.0" prefWidth="134.0" text="Translate" />
+   <Button layoutX="240.0" layoutY="81.0" mnemonicParsing="false" onAction="#OnChooseFileButtonClick" prefHeight="96.0" prefWidth="126.0" text="Choose file" />
 </AnchorPane>

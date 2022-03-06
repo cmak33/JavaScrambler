@@ -2,16 +2,17 @@ package com.example.javaproject.Classes.Translator;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-
-import java.io.IOException;
+import org.openqa.selenium.WebDriver;
 import java.util.Arrays;
 
 public abstract class Translator<T extends TranslationData> {
 
-    protected T translationData;
+    protected final T translationData;
+    private final WebDriverCreator webDriverCreator;
 
-    public Translator(T translationData){
+    protected Translator(T translationData,WebDriverCreator webDriverCreator){
         this.translationData=translationData;
+        this.webDriverCreator = webDriverCreator;
     }
 
     protected String translate(String initialUrl,String text){
@@ -33,12 +34,10 @@ public abstract class Translator<T extends TranslationData> {
     }
 
     private Document getDocumentByUrl(String url){
-        Document document;
-        try{
-            document = Jsoup.connect(url).get();
-        }catch(IOException exception){
-            document = null;
-        }
+        WebDriver driver = webDriverCreator.createWebDriver();
+        driver.get(url);
+        Document document = Jsoup.parse(driver.getPageSource());
+        driver.quit();
         return document;
     }
 
@@ -49,7 +48,7 @@ public abstract class Translator<T extends TranslationData> {
     private String findTranslationInDocument(Document document){
         String translation;
         try {
-            translation =document.selectXpath(translationData.getTranslationPath()).get(0).text();
+            translation =document.selectXpath(translationData.getTranslationXpath()).get(0).text();
         }catch (Exception exception) {
             translation = "";
         }

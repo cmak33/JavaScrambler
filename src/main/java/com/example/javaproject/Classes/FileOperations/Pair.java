@@ -8,4 +8,12 @@ public class Pair<T,V> {
         this.first=first;
         this.second=second;
     }
+
+    public T getFirst() {
+        return first;
+    }
+
+    public V getSecond() {
+        return second;
+    }
 }
