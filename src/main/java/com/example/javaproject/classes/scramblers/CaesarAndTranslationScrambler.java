@@ -1,6 +1,6 @@
-package com.example.javaproject.Classes.ScramblerClasses;
+package com.example.javaproject.classes.scramblers;
 
-import com.example.javaproject.Classes.Translator.RussianEnglishTranslator;
+import com.example.javaproject.classes.translators.RussianEnglishTranslator;
 
 public class CaesarAndTranslationScrambler extends CaesarScrambler{
     private  final RussianEnglishTranslator translator;

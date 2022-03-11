@@ -1,7 +1,7 @@
-package com.example.javaproject.Classes.Db;
+package com.example.javaproject.classes.db;
 
 public class DbConnectionData {
-    public static final String url ="jdbc:mysql://localhost/javascrambler";
+    private final String url ="jdbc:mysql://localhost/javascrambler";
     public static final String nickname = "root";
     public static final String password = "";
 

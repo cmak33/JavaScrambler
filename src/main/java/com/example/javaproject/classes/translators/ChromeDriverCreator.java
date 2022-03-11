@@ -1,4 +1,4 @@
-package com.example.javaproject.Classes.Translator;
+package com.example.javaproject.classes.translators;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

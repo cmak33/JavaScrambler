@@ -1,4 +1,4 @@
-package com.example.javaproject.Classes.FileOperations;
+package com.example.javaproject.classes.fileOperations;
 
 
 import java.io.FileWriter;

@@ -13,6 +13,6 @@ module com.example.javaproject {
 
     opens com.example.javaproject to javafx.fxml;
     exports com.example.javaproject;
-    exports com.example.javaproject.Controllers;
-    opens com.example.javaproject.Controllers to javafx.fxml;
+    exports com.example.javaproject.controllers;
+    opens com.example.javaproject.controllers to javafx.fxml;
 }

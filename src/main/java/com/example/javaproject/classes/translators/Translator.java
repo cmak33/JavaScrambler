@@ -1,4 +1,4 @@
-package com.example.javaproject.Classes.Translator;
+package com.example.javaproject.classes.translators;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import java.util.Arrays;
 
 public abstract class Translator<T extends TranslationData> {
-
     protected final T translationData;
     private final WebDriverCreator webDriverCreator;
 

@@ -1,10 +1,10 @@
 package com.example.javaproject;
 
-import com.example.javaproject.Classes.FileOperations.FileReaderWriter;
-import com.example.javaproject.Classes.FileOperations.Pair;
-import com.example.javaproject.Classes.Translator.ChromeDriverCreator;
-import com.example.javaproject.Classes.Translator.RussianEnglishTranslationData;
-import com.example.javaproject.Classes.Translator.RussianEnglishTranslator;
+import com.example.javaproject.classes.fileOperations.FileReaderWriter;
+import com.example.javaproject.classes.fileOperations.Pair;
+import com.example.javaproject.classes.translators.ChromeDriverCreator;
+import com.example.javaproject.classes.translators.RussianEnglishTranslationData;
+import com.example.javaproject.classes.translators.RussianEnglishTranslator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

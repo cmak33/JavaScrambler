@@ -1,10 +1,10 @@
-package com.example.javaproject.Classes.ScramblerClasses;
+package com.example.javaproject.classes.scramblers;
 
 public class CaesarScrambler  implements  Scrambler{
     private final int shift;
 
     private interface CharChanger{
-        public char changeChar(char ch);
+        char changeChar(char ch);
     }
 
     public CaesarScrambler(int shift){
@@ -13,12 +13,12 @@ public class CaesarScrambler  implements  Scrambler{
 
     @Override
     public String encode(String str) {
-        return changeStringChars(str,(char ch)->encodeChar(ch));
+        return changeStringChars(str, this::encodeChar);
     }
 
     @Override
     public String decode(String str) {
-        return changeStringChars(str,(char ch)->decodeChar(ch));
+        return changeStringChars(str,this::decodeChar);
     }
 
 

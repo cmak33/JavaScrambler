@@ -1,4 +1,4 @@
-package com.example.javaproject.Classes.Translator;
+package com.example.javaproject.classes.translators;
 
 
 public abstract class TranslationData {
