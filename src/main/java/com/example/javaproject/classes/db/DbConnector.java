@@ -26,6 +26,11 @@ public record DbConnector(String url, String name, String password) {
     }
 
     private Connection openConnection() throws SQLException {
+        try {
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
         return DriverManager.getConnection(url, name, password);
     }
 

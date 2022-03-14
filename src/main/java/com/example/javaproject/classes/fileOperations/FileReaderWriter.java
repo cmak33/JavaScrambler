@@ -3,6 +3,8 @@ package com.example.javaproject.classes.fileOperations;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -24,7 +26,7 @@ public class FileReaderWriter {
         boolean isSuccessful = true;
         String readText;
         try{
-            readText=new String(Files.readAllBytes(Paths.get(path)));
+            readText= Files.readString(Paths.get(path), StandardCharsets.UTF_8);
         }catch(IOException exception){
             isSuccessful=false;
             readText=null;

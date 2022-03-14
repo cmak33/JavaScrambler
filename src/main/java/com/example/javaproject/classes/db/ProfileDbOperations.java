@@ -14,7 +14,8 @@ public record ProfileDbOperations(DbConnector connector,
         };
         ResultSetOperation operation = (ResultSet resultSet) -> {
             try {
-                wrapper.result = resultSet.next();
+                resultSet.next();
+                wrapper.result =resultSet.getInt(1)==1 ;
             } catch (SQLException exception) {
                 wrapper.result = false;
             }
@@ -34,7 +35,8 @@ public record ProfileDbOperations(DbConnector connector,
         };
         ResultSetOperation operation = (ResultSet resultSet) -> {
             try {
-                wrapper.result = resultSet.next();
+                resultSet.next();
+                wrapper.result =resultSet.getInt(1)==0 ;
             } catch (SQLException exception) {
                 wrapper.result = false;
             }
@@ -58,12 +60,12 @@ public record ProfileDbOperations(DbConnector connector,
         return String.format("INSERT INTO %s (nickname,password) VALUES ('%s','%s')",tableName,nickname,password);
     }
 
-    private int getIdByNickname(String nickname){
+    public int getIdByNickname(String nickname){
         var wrapper = new Object(){int id;};
         ResultSetOperation operation = (ResultSet resultSet) -> {
             try {
                 resultSet.next();
-                wrapper.id =resultSet.getInt(0) ;
+                wrapper.id =resultSet.getInt(1) ;
             } catch (SQLException exception) {
                 wrapper.id=-1;
             }
@@ -75,6 +77,14 @@ public record ProfileDbOperations(DbConnector connector,
 
     private String getIdByNicknameQuery(String nickname){
         return String.format("SELECT id FROM %s WHERE nickname='%s'",tableName,nickname);
+    }
+
+    public void updateProfile(int id,String newNickname,String newPassword){
+        connector.executeNonQuery(getUpdateProfileQuery(id,newNickname,newPassword));
+    }
+
+    private String getUpdateProfileQuery(int id,String newNickname,String newPassword){
+        return String.format("UPDATE %s SET nickname='%s',password='%s' WHERE id='%d'",tableName,newNickname,newPassword,id);
     }
 
 }

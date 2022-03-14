@@ -18,7 +18,7 @@ public record EncryptionsDbOperations(DbConnector connector, String tableName) {
 
     private String getAddEncryptionQuery(Encryption encryption){
         Timestamp timestamp = Timestamp.valueOf(encryption.getPublishDateTime());;
-        return String.format("INSERT INTO %s ('profileId','text','publishDate') VALUES ('%d','%s','%s')",tableName,encryption.getProfileId(),encryption.getEncryptedText(),timestamp);
+        return String.format("INSERT INTO %s (profileId,text,publishDate) VALUES ('%d','%s','%s')",tableName,encryption.getProfileId(),encryption.getEncryptedText(),timestamp);
     }
 
     public List<Encryption> getEncryptionsByProfileId(int profileId){
@@ -40,7 +40,7 @@ public record EncryptionsDbOperations(DbConnector connector, String tableName) {
     }
 
     private String getEncryptionsQuery(int profileId){
-        return String.format("SELECT text,publishDate FROM %s WHERE profileId='%s'",tableName,profileId);
+        return String.format("SELECT text,publishDate FROM %s WHERE profileId='%d'",tableName,profileId);
     }
 
 }

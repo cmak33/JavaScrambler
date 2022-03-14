@@ -12,11 +12,11 @@ public class CaesarAndTranslationScrambler extends CaesarScrambler{
 
     @Override
     public String encode(String str){
-        return translator.translateFromRussianToEnglish(super.encode(str));
+        return super.encode(translator.translateFromRussianToEnglish(str));
     }
 
     @Override
     public String decode(String str){
-        return super.decode(translator.translateFromEnglishToRussian(str));
+        return translator.translateFromEnglishToRussian(super.decode(str));
     }
 }

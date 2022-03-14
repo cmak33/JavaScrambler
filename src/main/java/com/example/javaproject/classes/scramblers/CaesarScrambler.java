@@ -1,6 +1,7 @@
 package com.example.javaproject.classes.scramblers;
 
 public class CaesarScrambler  implements  Scrambler{
+    private final int MIN_CHAR_CODE = 32;
     private final int shift;
 
     private interface CharChanger{
