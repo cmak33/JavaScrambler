@@ -27,7 +27,7 @@ import java.io.IOException;
 public class MainController {
     private final String profileViewName = "ProfileView.fxml";
     private final ChromeDriverCreator driverCreator = new ChromeDriverCreator("C:\\Users\\User\\Desktop\\chromedriver.exe");
-    private final RussianEnglishTranslationData translationData = new RussianEnglishTranslationData("https://translate.google.gr/?sl=ru&tl=en&text=","https://translate.google.gr/?sl=en&tl=ru&text=","html > body > c-wiz > div > div:eq(1) > c-wiz > div:eq(1) > c-wiz > div > div:eq(1) > div:eq(2) > c-wiz:eq(1) > div:eq(5) > div > div > span > span > span",5000,"%20");
+    private final RussianEnglishTranslationData translationData = new RussianEnglishTranslationData("https://translate.google.gr/?sl=ru&tl=en&text=","https://translate.google.gr/?sl=en&tl=ru&text=","//*[@id='yDmH0d']/c-wiz/div/div[2]/c-wiz/div[2]/c-wiz/div[1]/div[2]/div[3]/c-wiz[2]/div[6]/div/div[1]/span[1]/span/span",5000,"%20");
     private final RussianEnglishTranslator translator = new RussianEnglishTranslator(translationData,driverCreator);
     private final CaesarAndTranslationScrambler scrambler = new CaesarAndTranslationScrambler(translator,15);
     private String inputFilePath = null;
