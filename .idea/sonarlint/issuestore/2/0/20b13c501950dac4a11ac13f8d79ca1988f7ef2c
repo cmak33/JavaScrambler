@@ -1,0 +1,7 @@
+
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(±ÿÆ»ÿÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ñÿô–ıÿÿÿÿ
+7
+java:S1170"!Make this final field static too.(Õùà˜
+=
+java:S1068"'Remove this unused "url" private field.(Õùà˜
