@@ -1,4 +1,4 @@
-module com.example.javaproject {
+module com.scrambler {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.jsoup;
@@ -17,8 +17,8 @@ module com.example.javaproject {
     requires org.junit.jupiter.api;
 
 
-    opens com.example.javaproject to javafx.fxml;
-    exports com.example.javaproject;
-    exports com.example.javaproject.tests to junit;
+    opens com.scrambler to javafx.fxml;
+    exports com.scrambler;
+    exports com.scrambler.tests to junit;
 
 }
