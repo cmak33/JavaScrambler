@@ -1,12 +1,0 @@
-
-<
-java:S1170"!Make this final field static too.(Œ¤üÿÿÿÿ
-N	java:S106O"9Replace this use of System.out or System.err by a logger.(¡°¿—
-q
-java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(óíè8àÌ¡Æø/
-v
-java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(˜Ðáòûÿÿÿÿ8àÌ¡Æø/
-F
-java:S1128")Remove this unused import 'java.io.File'.(†Ð¥Å8àÌ¡Æø/
-O
-java:S1068"-Remove this unused "scrambler" private field.(Š–Šøüÿÿÿÿ8òªô”ø/

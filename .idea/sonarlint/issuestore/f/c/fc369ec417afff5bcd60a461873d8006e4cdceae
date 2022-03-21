@@ -1,6 +1,0 @@
-
-l	java:S116"XRename this field "MIN_CHAR_CODE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÍµÞG
-6
-java:S1170"!Make this final field static too.(ÍµÞG
-F
-java:S1068"1Remove this unused "MIN_CHAR_CODE" private field.(ÍµÞG
