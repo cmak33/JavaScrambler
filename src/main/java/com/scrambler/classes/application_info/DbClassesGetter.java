@@ -8,8 +8,8 @@ import com.scrambler.classes.file_operations.FileOperations;
 import java.util.Properties;
 
 public class DbClassesGetter {
+    private static final String DB_PROPERTIES_PATH = "properties/db.properties";
     private static DbClassesGetter dbClassesGetter;
-    private static final String DB_PROPERTIES_PATH = "db.properties";
     private final DbQueriesExecutor executor;
     private final ProfileDbOperations profileOperations;
     private final EncryptionDbOperations encryptionOperations;
@@ -23,7 +23,7 @@ public class DbClassesGetter {
     }
 
 
-    public static DbClassesGetter getDbClassesGetter(){
+    public static DbClassesGetter getInstance(){
         if(dbClassesGetter==null){
             dbClassesGetter = new DbClassesGetter();
         }
@@ -36,11 +36,6 @@ public class DbClassesGetter {
 
     public void setCurrentProfile(Profile currentProfile) {
         this.currentProfile = currentProfile;
-    }
-
-
-    public DbQueriesExecutor getExecutor(){
-        return executor;
     }
 
     public ProfileDbOperations getProfileOperations(){

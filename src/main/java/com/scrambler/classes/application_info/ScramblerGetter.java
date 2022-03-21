@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.Properties;
 
 public class ScramblerGetter {
-    private static final String SCRAMBLER_PROPERTIES_PATH = "scrambler.properties";
+    private static final String SCRAMBLER_PROPERTIES_PATH = "properties/scrambler.properties";
     private static CaesarAndTranslationScrambler scrambler;
 
     private ScramblerGetter(){}

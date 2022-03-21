@@ -11,7 +11,7 @@
    <children>
       <TextField fx:id="nicknameEdit" layoutX="198.0" layoutY="89.0" />
       <TextField fx:id="passwordEdit" layoutX="198.0" layoutY="158.0" />
-      <Button fx:id="alterProfileButton" layoutX="177.0" layoutY="287.0" mnemonicParsing="false" onAction="#onAlterProfileButtonClick" prefHeight="41.0" prefWidth="67.0" text="Change" />
+      <Button layoutX="177.0" layoutY="287.0" mnemonicParsing="false" onAction="#onAlterProfileButtonClick" prefHeight="41.0" prefWidth="67.0" text="Change" />
       <Label layoutX="81.0" layoutY="93.0" text="Nickname" />
       <Label layoutX="81.0" layoutY="162.0" text="Password" />
       <Label id="errorLabel" layoutX="187.0" layoutY="233.0" textFill="#ef0101">
@@ -19,7 +19,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="goBackLabel" layoutX="22.0" layoutY="25.0" onMouseClicked="#switchToMainView" prefHeight="18.0" prefWidth="67.0" text="Back" />
+      <Label layoutX="22.0" layoutY="25.0" onMouseClicked="#switchToMainView" prefHeight="18.0" prefWidth="67.0" text="Back" />
       <ListView fx:id="encryptionsListView" layoutX="371.0" layoutY="34.0" prefHeight="335.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

@@ -1,25 +1,23 @@
 package com.scrambler;
 
-import com.scrambler.classes.db.ApplicationInfo;
+import com.scrambler.classes.application_info.DbClassesGetter;
+import com.scrambler.classes.db.EncryptionDbOperations;
+import com.scrambler.classes.db.ProfileDbOperations;
 import com.scrambler.classes.db.models.Encryption;
-import javafx.collections.ObservableList;
+import com.scrambler.classes.db.models.Profile;
+import com.scrambler.classes.scene_loader.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.MapValueFactory;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
+
 
 public class ProfileController {
-    private final String mainViewName = "MainView.fxml";
+    private static final ProfileDbOperations profileDbOperations = DbClassesGetter.getInstance().getProfileOperations();
+    private static final EncryptionDbOperations encryptionDbOperations = DbClassesGetter.getInstance().getEncryptionOperations();
+    private static final Profile currentProfile = DbClassesGetter.getInstance().getCurrentProfile();
 
     @FXML
     private TextField nicknameEdit;
@@ -28,45 +26,38 @@ public class ProfileController {
     private TextField passwordEdit;
 
     @FXML
-    private Button alterProfileButton;
+    private ListView<String> encryptionsListView;
 
-    @FXML
-    private Label goBackLabel;
-
-    @FXML
-    private ListView encryptionsListView;
-
-
+    @SuppressWarnings("unused")
     @FXML
     void onAlterProfileButtonClick(ActionEvent event) {
-        if(ApplicationInfo.getCurrentProfile().getNickname().equals(nicknameEdit.getText()) || ApplicationInfo.getProfileDbOperations().isNicknameAvailable(nicknameEdit.getText())){
-            ApplicationInfo.getProfileDbOperations().updateProfile(ApplicationInfo.getCurrentProfile().getId(),nicknameEdit.getText(),passwordEdit.getText());
+        if(isPossibleToAlterProfile()){
+            profileDbOperations.updateProfile(currentProfile.getId(),nicknameEdit.getText(),passwordEdit.getText());
+            currentProfile.setNickname(nicknameEdit.getText());
+            currentProfile.setPassword(passwordEdit.getText());
         }
     }
 
+    private boolean isPossibleToAlterProfile(){
+        return currentProfile.getNickname().equals(nicknameEdit.getText())
+                || profileDbOperations.isNicknameAvailable(nicknameEdit.getText());
+    }
+
+    @SuppressWarnings("unused")
     @FXML
     void switchToMainView(MouseEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(mainViewName));
-            Stage stage = getStage();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }catch(IOException exception){
-            System.err.println(exception.getMessage());
-        }
-    }
-
-    private Stage getStage(){
-        return  (Stage)nicknameEdit.getScene().getWindow();
+        Stage stage = SceneLoader.findControlStage(nicknameEdit);
+        SceneLoader.loadMainView(stage);
     }
 
 
     @FXML
     private void initialize() {
-        List<Encryption> encryptionList = ApplicationInfo.getEncryptionsDbOperations().getProfileEncryptionList(ApplicationInfo.getCurrentProfile().getId());
-        encryptionList.forEach(x-> {
-            encryptionsListView.getItems().add(x.getPublishDateTime().toString() + " -- "+x.getEncryptedText());
-        });
+        List<Encryption> encryptionList =encryptionDbOperations.getProfileEncryptionList(currentProfile.getId());
+        encryptionList.forEach(encryption-> encryptionsListView.getItems().add(encryptionToString(encryption)));
+    }
+
+    private String encryptionToString(Encryption encryption){
+        return encryption.getPublishDateTime().toString() + " -- "+encryption.getEncryptedText();
     }
 }
