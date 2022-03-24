@@ -22,7 +22,7 @@ public class FileOperations {
             isSuccessful = false;
             LOGGER.log(Level.WARNING,"could not write to file",exception);
         }
-        return !isSuccessful;
+        return isSuccessful;
     }
 
     public static Pair<Boolean,String> tryReadFile(String path){

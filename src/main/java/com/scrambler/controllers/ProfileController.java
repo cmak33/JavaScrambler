@@ -1,4 +1,4 @@
-package com.scrambler;
+package com.scrambler.controllers;
 
 import com.scrambler.classes.application_info.DbClassesGetter;
 import com.scrambler.classes.db.EncryptionDbOperations;
@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 
 public class ProfileController {
@@ -32,10 +33,14 @@ public class ProfileController {
     @FXML
     void onAlterProfileButtonClick(ActionEvent event) {
         if(isPossibleToAlterProfile()){
-            profileDbOperations.updateProfile(currentProfile.getId(),nicknameEdit.getText(),passwordEdit.getText());
-            currentProfile.setNickname(nicknameEdit.getText());
-            currentProfile.setPassword(passwordEdit.getText());
+            CompletableFuture.runAsync(()->updateProfile(nicknameEdit.getText(),passwordEdit.getText()));
         }
+    }
+
+    private void updateProfile(String nickname,String password){
+        profileDbOperations.updateProfile(currentProfile.getId(),nickname,password);
+        currentProfile.setNickname(nickname);
+        currentProfile.setPassword(password);
     }
 
     private boolean isPossibleToAlterProfile(){

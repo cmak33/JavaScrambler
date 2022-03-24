@@ -1,4 +1,4 @@
-package com.scrambler;
+package com.scrambler.controllers;
 
 
 import com.scrambler.classes.application_info.DbClassesGetter;
@@ -17,10 +17,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.concurrent.CompletableFuture;
 
 public class MainController {
     private final CaesarAndTranslationScrambler scrambler = ScramblerGetter.getScrambler();
     private final EncryptionDbOperations encryptionDbOperations = DbClassesGetter.getInstance().getEncryptionOperations();
+    private boolean isScrambling = false;
     private String inputFilePath = null;
     private String outputFilePath = null;
 
@@ -64,16 +66,27 @@ public class MainController {
         return fileChooser.showOpenDialog(stage);
     }
 
+    private void runCompletableFutureScramble(Runnable runnable){
+        if(!isScrambling){
+            isScrambling = true;
+            CompletableFuture.runAsync(runnable).thenRun(()->isScrambling=false);
+        }
+    }
+
     @FXML
     @SuppressWarnings("unused")
     void decrypt(ActionEvent event) {
+        runCompletableFutureScramble(this::decryptSync);
+    }
+
+    private void decryptSync(){
         Pair<Boolean,String> result= FileOperations.tryReadFile(inputFilePath);
         boolean isReadCorrectly = result.getFirst();
         if(isReadCorrectly){
             String decrypted = scrambler.decode(result.getSecond());
-           if(FileOperations.tryWriteToFile(outputFilePath, decrypted)){
-               errorLabel.setText("error writing to output file");
-           }
+            if(FileOperations.tryWriteToFile(outputFilePath, decrypted)){
+                errorLabel.setText("error writing to output file");
+            }
         }
         else{
             errorLabel.setText("error reading from file");
@@ -83,6 +96,10 @@ public class MainController {
     @SuppressWarnings("unused")
     @FXML
     void encrypt(ActionEvent event) {
+        runCompletableFutureScramble(this::encryptSync);
+    }
+
+    private void encryptSync(){
         Pair<Boolean,String> result= FileOperations.tryReadFile(inputFilePath);
         boolean isReadCorrectly = result.getFirst();
         if(isReadCorrectly){

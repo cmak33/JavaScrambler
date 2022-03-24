@@ -20,5 +20,7 @@ module com.scrambler {
     opens com.scrambler to javafx.fxml;
     exports com.scrambler;
     exports com.scrambler.tests to junit;
+    exports com.scrambler.controllers;
+    opens com.scrambler.controllers to javafx.fxml;
 
 }

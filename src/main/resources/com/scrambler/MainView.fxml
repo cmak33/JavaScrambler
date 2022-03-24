@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="511.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scrambler.MainController">
+<AnchorPane prefHeight="400.0" prefWidth="511.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scrambler.controllers.MainController">
    <children>
       <Button fx:id="choseInputFileButton" layoutX="81.0" layoutY="93.0" mnemonicParsing="false" onAction="#onChoseInputButtonClick" prefHeight="82.0" prefWidth="109.0" text="Chose input file" />
       <Button fx:id="choseOutputFileButton" layoutX="325.0" layoutY="91.0" mnemonicParsing="false" onAction="#onChoseOutputButtonClick" prefHeight="82.0" prefWidth="116.0" text=" Chose output file" />

@@ -2,6 +2,6 @@ package com.scrambler.classes.db;
 
 import java.sql.ResultSet;
 
-public interface ResultSetOperation {
+interface ResultSetOperation {
     void invoke(ResultSet resultSet);
 }
